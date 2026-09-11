@@ -5,7 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BubbleGum Head | Basilio Sainz</title>
 <link rel="icon" href="assets/img/profile.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500,400&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/carousel.js" defer></script>
 </head>
 <body>
 <header class="site-header">
@@ -44,10 +49,27 @@
   </div>
 
   <div class="panel">
+    <h2>-Gameplay-</h2>
+    <div class="video-embed">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/yfNtcgV8GEY" title="BubbleGum-Head_VerticalSlice V1.0.2" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="panel">
     <h2>-Some Concepts-</h2>
-    <div class="gallery">
-      <img src="assets/img/bgh-concept-1.png" alt="BubbleGum Head concept art">
-      <img src="assets/img/bgh-concept-2.gif" alt="BubbleGum Head gameplay gif">
+    <div class="carousel" data-carousel>
+      <div class="carousel-stage">
+        <div class="carousel-media"></div>
+        <button class="carousel-next" type="button" aria-label="Next">&rsaquo;</button>
+      </div>
+      <div class="carousel-thumbs">
+        <button class="carousel-thumb" type="button" data-type="image" data-src="assets/img/bgh-concept-1.png" data-alt="BubbleGum Head concept turnaround" style="background-image:url('assets/img/bgh-concept-1.png')"></button>
+        <button class="carousel-thumb" type="button" data-type="image" data-src="assets/img/bgh-concept-2.gif" data-alt="BubbleGum Head concept sketch" style="background-image:url('assets/img/bgh-concept-2.gif')"></button>
+        <button class="carousel-thumb" type="button" data-type="image" data-src="assets/BubbleGumHead/BubbleGumHead(01).jpg" data-alt="BubbleGum Head early concept 1" style="background-image:url('assets/BubbleGumHead/BubbleGumHead(01).jpg')"></button>
+        <button class="carousel-thumb" type="button" data-type="image" data-src="assets/BubbleGumHead/BubbleGumHead(2).jpg" data-alt="BubbleGum Head early concept 2" style="background-image:url('assets/BubbleGumHead/BubbleGumHead(2).jpg')"></button>
+        <button class="carousel-thumb" type="button" data-type="image" data-src="assets/BubbleGumHead/BubbleGumHead(3).jpg" data-alt="BubbleGum Head early concept 3" style="background-image:url('assets/BubbleGumHead/BubbleGumHead(3).jpg')"></button>
+        <button class="carousel-thumb" type="button" data-type="image" data-src="assets/BubbleGumHead/BubbleGumHead(4).jpg" data-alt="BubbleGum Head early concept 4" style="background-image:url('assets/BubbleGumHead/BubbleGumHead(4).jpg')"></button>
+      </div>
     </div>
   </div>
 </main>
