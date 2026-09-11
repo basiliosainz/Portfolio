@@ -1,0 +1,8 @@
+{
+  "name": "basiliosainz-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:media": "node scripts/build-media.mjs"
+  }
+}
