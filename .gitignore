@@ -1,6 +1,1 @@
 node_modules/
-
-# Original oversized source file (98 MB) - too close to GitHub's 100 MB hard
-# limit to track safely. Compress it or upload it to YouTube instead, then
-# drop the smaller version into assets/media/bubblegumhead/.
-assets/BubbleGumHead/
