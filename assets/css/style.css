@@ -174,10 +174,15 @@ main {
 
 .panel h2 {
   color: var(--accent);
-  margin-top: 0;
+  margin: 0;
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.5px;
+}
+
+.panel-heading {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .intro-text {
@@ -194,6 +199,13 @@ main {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, auto);
   gap: 14px;
+}
+
+.grid-3 .panel,
+.grid-2 .panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .grid-3 .col-worktools {
@@ -391,6 +403,7 @@ main {
   object-fit: contain;
   background: var(--panel-2);
   display: block;
+  cursor: pointer;
 }
 
 .carousel-next,
@@ -493,6 +506,105 @@ main {
   border-style: solid;
   border-width: 5px 0 5px 8px;
   border-color: transparent transparent transparent var(--cream);
+}
+
+/* Lightbox */
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  z-index: 1000;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox-content {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.lightbox-content img,
+.lightbox-content video {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 120px);
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--cream);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.lightbox-close {
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.lightbox-prev {
+  left: 16px;
+}
+
+.lightbox-next {
+  right: 16px;
+}
+
+@media (max-width: 640px) {
+  .lightbox {
+    padding: 20px;
+  }
+  .lightbox-prev,
+  .lightbox-next {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+  .lightbox-close {
+    width: 36px;
+    height: 36px;
+    font-size: 1.4rem;
+  }
 }
 
 .logo-row {
