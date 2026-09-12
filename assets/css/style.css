@@ -504,7 +504,8 @@ main {
   margin-top: 12px;
 }
 
-.logo-row img {
+.logo-row img,
+.logo-row video {
   max-height: 50px;
   width: auto;
 }
@@ -521,7 +522,8 @@ main {
   flex: 0 0 260px;
 }
 
-.showcase-image img {
+.showcase-image img,
+.showcase-image video {
   width: 100%;
   border-radius: 6px;
   border: 1px solid var(--border);

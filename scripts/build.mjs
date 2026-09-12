@@ -196,12 +196,32 @@ function renderCarouselThumb(item, base) {
   return `        <button class="carousel-thumb" type="button" data-type="image" data-src="${escapeAttr(src)}" data-alt="${escapeAttr(item.alt)}" style="background-image:url('${src}')"></button>`;
 }
 
-function renderGalleryItem(item, base) {
+function renderMedia(item, base) {
   const src = `${base}/${item.file}`;
   if (item.type === "video") {
-    return `      <video class="gallery-video" src="${escapeAttr(src)}" controls muted playsinline></video>`;
+    return `<video src="${escapeAttr(src)}" controls muted playsinline></video>`;
   }
-  return `      <img src="${escapeAttr(src)}" alt="${escapeAttr(item.alt)}">`;
+  return `<img src="${escapeAttr(src)}" alt="${escapeAttr(item.alt)}">`;
+}
+
+// "extra" section mirrors the original Don't Kill Rumble layout: the first
+// file is the big featured image/video, everything else is a row of small
+// logos next to the text. With a single file, it's just shown on its own.
+function renderShowcase(items, base, extraTextHtml) {
+  const [featured, ...rest] = items;
+  const image = `    <div class="showcase-image">\n      ${renderMedia(featured, base)}\n    </div>`;
+  if (!rest.length) {
+    return image + (extraTextHtml ? `\n    <div class="showcase-content">\n      ${extraTextHtml}\n    </div>` : "");
+  }
+  return (
+    `${image}\n` +
+    `    <div class="showcase-content">\n` +
+    (extraTextHtml ? `      ${extraTextHtml}\n` : "") +
+    `      <div class="logo-row">\n` +
+    rest.map((item) => `        ${renderMedia(item, base)}`).join("\n") +
+    `\n      </div>\n` +
+    `    </div>`
+  );
 }
 
 // ---------- page template ----------
@@ -256,13 +276,13 @@ function renderProjectPage({ folder, fields, hasLogo, contentItems, extraItems, 
         `  </div>`
       : "";
 
+  const extraTextHtml = fields.ExtraText ? `<p>${richText(fields.ExtraText)}</p>` : "";
   const extra =
     extraItems.length > 0
       ? `\n\n  <div class="panel">\n` +
         (fields.ExtraHeading ? `    <h2>${escapeHtml(fields.ExtraHeading)}</h2>\n` : "") +
-        (fields.ExtraText ? `    <p>${richText(fields.ExtraText)}</p>\n` : "") +
-        `    <div class="gallery">\n` +
-        extraItems.map((item) => renderGalleryItem(item, extraBase)).join("\n") +
+        `    <div class="showcase">\n` +
+        renderShowcase(extraItems, extraBase, extraTextHtml) +
         `\n    </div>\n` +
         `  </div>`
       : "";
