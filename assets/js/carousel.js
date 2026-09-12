@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var stage = root.querySelector('.carousel-media');
     var thumbs = Array.prototype.slice.call(root.querySelectorAll('.carousel-thumb'));
     var nextBtn = root.querySelector('.carousel-next');
+    var prevBtn = root.querySelector('.carousel-prev');
     var current = 0;
 
     function show(index) {
@@ -42,6 +43,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (nextBtn) {
       nextBtn.addEventListener('click', function () {
         show(current + 1);
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        show(current - 1);
       });
     }
 

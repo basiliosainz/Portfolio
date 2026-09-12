@@ -7,4 +7,4 @@ cd "$repo_root" || exit 1
 
 node scripts/build.mjs
 
-git add index.html contact.html *.html
+git add *.html
