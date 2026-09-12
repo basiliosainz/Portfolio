@@ -1,0 +1,19 @@
+# Texto del botón del menú y título de la página
+NavLabel: Junior Solutions
+
+# Texto de introducción, al lado del Logo.png de esta carpeta.
+Intro: Junior Solutions was my first job in the video game industry back in 2020, where I contributed by creating SFXs and sound design for the project's atmosphere.
+
+# Link a Steam. Dejalo vacío para que el botón no se muestre.
+Steam: https://store.steampowered.com/app/1460520/Junior_Solutions/
+
+# Link de YouTube. Dejalo vacío para ocultar toda la sección de video.
+YouTube: https://www.youtube.com/watch?v=6RlL_gijiVY
+GameplayHeading: -Trailer-
+
+# Título de la galería principal (carpeta "content"). Se oculta sola si "content" está vacía.
+GalleryHeading: -Gallery-
+
+# Título y texto de la sección extra (carpeta "extra"). Se oculta sola si "extra" está vacía o no existe.
+ExtraHeading:
+ExtraText:

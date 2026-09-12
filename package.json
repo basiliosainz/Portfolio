@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:media": "node scripts/build-media.mjs",
-    "preview": "npm run build:media && npx --yes serve -l 5050 ."
+    "build": "node scripts/build.mjs",
+    "preview": "npm run build && npx --yes serve -l 5050 ."
   }
 }

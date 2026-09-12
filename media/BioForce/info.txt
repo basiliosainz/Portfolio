@@ -1,0 +1,23 @@
+# Texto del botón del menú y título de la página
+NavLabel: BioForce
+
+# Esta carpeta no tiene Logo.png, así que se usa este título arriba del texto de introducción.
+# Si agregás un Logo.png, este título deja de mostrarse y aparece el logo en su lugar.
+IntroHeading: -VR Game Development in Unity-
+
+# Texto de introducción.
+Intro: This was a VR project developed in Unity, where I was responsible for Environment Design, SFXs, and Sound Design, as well as all VFXs. The visual effects were created using the Particle System (Shuriken), VFX Graph, and Materials Shader Graph.
+
+# Link a Steam. Dejalo vacío para que el botón no se muestre.
+Steam:
+
+# Link de YouTube. Dejalo vacío para ocultar toda la sección de video.
+YouTube: https://www.youtube.com/watch?v=TJvELd_bU_E
+GameplayHeading: -Gameplay-
+
+# Título de la galería principal (carpeta "content"). Se oculta sola si "content" está vacía.
+GalleryHeading: -Some Captures-
+
+# Título y texto de la sección extra (carpeta "extra"). Se oculta sola si "extra" está vacía o no existe.
+ExtraHeading:
+ExtraText:

@@ -1,0 +1,20 @@
+# Texto del botón del menú y título de la página
+NavLabel: Don't Kill Rumble
+
+# Texto de introducción, al lado del Logo.png de esta carpeta.
+# Podés resaltar palabras poniéndolas entre *asteriscos*.
+Intro: In Don't Kill Rumble (2022 - late 2025), I created and implemented the SFXs, VFXs (Niagara system and Materials), and UI, and also developed Blueprint systems such as skin customization, rewards, and more.
+
+# Link a Steam. Dejalo vacío para que el botón no se muestre.
+Steam: https://store.steampowered.com/app/2146310/Dont_Kill_Rumble/?l=spanish
+
+# Link de YouTube. Dejalo vacío para ocultar toda la sección de video.
+YouTube: https://www.youtube.com/watch?v=ZukPw4u0PlA
+GameplayHeading: -Gameplay-
+
+# Título de la galería principal (carpeta "content"). Se oculta sola si "content" está vacía.
+GalleryHeading: -VFXs & SFXs-
+
+# Título y texto de la sección extra (carpeta "extra"). Se oculta sola si "extra" está vacía o no existe.
+ExtraHeading:
+ExtraText: Don't Kill Rumble was showcased at major events such as *EVA* 2023 and 2024 in Argentina, *Gamescom* in Germany, and we had the honor of being part of the *Latin American Game Showcase*.

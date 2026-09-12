@@ -1,0 +1,31 @@
+# ---------------------------------------------------------------------
+# PLANTILLA - copiá esta carpeta completa, renombrala (ej: "MyNewGame"),
+# y completá los campos de abajo. Corré "npm run build" (o simplemente
+# hacé commit) y el botón + la página aparecen solos.
+# ---------------------------------------------------------------------
+
+# Texto del botón del menú y título de la página (obligatorio)
+NavLabel: My New Game
+
+# Texto de introducción, al lado de Logo.png (si existe en esta carpeta).
+# Si no ponés un Logo.png, se usa IntroHeading como título en su lugar.
+# Podés resaltar palabras poniéndolas entre *asteriscos*.
+IntroHeading:
+Intro: Write a short description of the project here.
+
+# Link a Steam. Dejalo vacío para que el botón no se muestre.
+Steam:
+
+# Link de YouTube (youtube.com/watch?v=... o youtu.be/...).
+# Dejalo vacío para ocultar toda la sección de video.
+YouTube:
+GameplayHeading: -Gameplay-
+
+# Título de la galería principal (carpeta "content" de al lado).
+# Se oculta sola si "content" no tiene archivos.
+GalleryHeading: -Gallery-
+
+# Título y texto de la sección extra (carpeta "extra" de al lado).
+# Se oculta sola si "extra" no existe o no tiene archivos.
+ExtraHeading:
+ExtraText:

@@ -1,10 +1,10 @@
 #!/bin/sh
-# Keeps assets/media/*/manifest.json in sync automatically before every
-# commit, so renaming/adding/removing files in a media folder never needs
-# a manual `npm run build:media` - it just happens when you commit.
+# Regenerates every project page + the nav menu from media/ before each
+# commit, so adding/editing a project folder never needs a manual
+# `npm run build` - it just happens when you commit.
 repo_root=$(git rev-parse --show-toplevel)
 cd "$repo_root" || exit 1
 
-node scripts/build-media.mjs
+node scripts/build.mjs
 
-git add assets/media/*/manifest.json
+git add index.html contact.html *.html
