@@ -75,8 +75,8 @@ header.site-header {
 }
 
 .profile-pic {
-  width: 231px;
-  height: 231px;
+  width: 132px;
+  height: 132px;
   border-radius: 50%;
   overflow: hidden;
   flex: none;
