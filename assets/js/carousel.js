@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', function () {
         t.classList.toggle('active', i === current);
       });
 
+      thumbs[current].scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+
       if (lightbox.isOpenFor(root)) {
         lightbox.render(thumbs[current]);
       }
