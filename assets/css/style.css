@@ -21,6 +21,10 @@ html, body {
   padding: 0;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--bg);
   color: var(--cream);
@@ -29,6 +33,33 @@ body {
   font-weight: 400;
   line-height: 1.5;
   text-align: center;
+  position: relative;
+}
+
+/* Rotated tiled icon pattern behind everything. The tile itself is a plain
+   axis-aligned repeat; we oversize it (300vmax) and rotate the whole thing
+   45deg so it tiles seamlessly with no visible seams or corner gaps. */
+body::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300vmax;
+  height: 300vmax;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  background-image: url("../img/bg-pattern.svg");
+  background-repeat: repeat;
+  background-size: 244px 164px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+header.site-header,
+nav.site-nav,
+main,
+footer.site-footer {
+  position: relative;
+  z-index: 1;
 }
 
 h1, h2, h3 {
