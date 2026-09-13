@@ -42,7 +42,7 @@ const SOCIAL_LINKS_HTML = `      <ul class="social-list">
         <li><a href="https://www.instagram.com/basiliosainz/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
         </a></li>
-        <li><a href="https://drive.google.com/file/d/1z9bSEwRgCeijRWIIe9_BnCmLQ6lsMFD2/view?usp=sharing" target="_blank" rel="noopener" title="CV / Resume" aria-label="CV">
+        <li><a href="assets/cv/CurriculVitae_BasilioSainz_2025.pdf" target="_blank" rel="noopener" title="CV / Resume" aria-label="CV">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
         </a></li>
         <li><a href="https://drive.google.com/file/d/1h7QVRaF8gExGZ1FiDCpqRlA9MoOFrjWL/view?usp=sharing" target="_blank" rel="noopener" title="Cover Letter" aria-label="Cover Letter">
