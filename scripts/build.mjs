@@ -7,6 +7,12 @@
 // page). Then run this script (or just commit - the pre-commit hook runs it
 // for you) and the page + nav button appear automatically.
 //
+// Store button: info.txt's "Steam" key sets the link URL and "SteamLabel"
+// (optional) overrides the button text (defaults to "-Go to Steam-"). If a
+// file named Shop.<ext> (jpg/png/gif/webp) exists directly inside the
+// project's media folder (next to Logo.png), it replaces the Steam icon on
+// that button - handy for games sold somewhere other than Steam.
+//
 // Run with:  npm run build
 import { readdir, readFile, writeFile, stat, access } from "node:fs/promises";
 import path from "node:path";
@@ -121,6 +127,7 @@ const KNOWN_KEYS = [
   "IntroHeading",
   "Intro",
   "Steam",
+  "SteamLabel",
   "YouTube",
   "GameplayHeading",
   "GalleryHeading",
@@ -194,6 +201,23 @@ async function listMediaFiles(dirPath, projectLabel) {
   return items;
 }
 
+// Looks for a file named "Shop.<ext>" directly inside the project's media
+// folder (same level as Logo.png). If present, it replaces the Steam icon
+// on the store button - useful for games not sold on Steam.
+async function findShopImage(folderPath) {
+  if (!(await exists(folderPath))) return null;
+  const entries = await readdir(folderPath, { withFileTypes: true });
+  for (const entry of entries) {
+    if (!entry.isFile()) continue;
+    const ext = path.extname(entry.name).toLowerCase();
+    const base = path.basename(entry.name, path.extname(entry.name));
+    if (IMAGE_EXT.has(ext) && base.toLowerCase() === "shop") {
+      return entry.name;
+    }
+  }
+  return null;
+}
+
 // ---------- HTML fragments ----------
 
 function renderNavUl(navItems, currentHref) {
@@ -249,10 +273,11 @@ function renderShowcase(items, base, extraTextHtml) {
 
 // ---------- page template ----------
 
-function renderProjectPage({ folder, fields, hasLogo, contentItems, extraItems, navHtml }) {
+function renderProjectPage({ folder, fields, hasLogo, contentItems, extraItems, navHtml, shopIcon }) {
   const navLabel = fields.NavLabel || folder;
   const contentBase = `media/${folder}/content`;
   const extraBase = `media/${folder}/extra`;
+  const storeIconSrc = shopIcon ? `media/${folder}/${shopIcon}` : "assets/img/steam-icon.png";
 
   let hero;
   if (hasLogo) {
@@ -261,7 +286,7 @@ function renderProjectPage({ folder, fields, hasLogo, contentItems, extraItems, 
       `    <img class="project-logo" src="media/${folder}/Logo.png" alt="${escapeAttr(navLabel)} logo">\n` +
       `    <div class="project-text">\n` +
       `      <p>${richText(fields.Intro)}</p>\n` +
-      renderSteamButton(fields.Steam) +
+      renderSteamButton(fields.Steam, fields.SteamLabel, storeIconSrc) +
       `    </div>\n` +
       `  </div>`;
   } else {
@@ -269,7 +294,7 @@ function renderProjectPage({ folder, fields, hasLogo, contentItems, extraItems, 
       `  <div class="panel">\n` +
       (fields.IntroHeading ? `    <h2>${escapeHtml(fields.IntroHeading)}</h2>\n` : "") +
       `    <p>${richText(fields.Intro)}</p>\n` +
-      renderSteamButton(fields.Steam) +
+      renderSteamButton(fields.Steam, fields.SteamLabel, storeIconSrc) +
       `  </div>`;
   }
 
@@ -318,12 +343,13 @@ function renderProjectPage({ folder, fields, hasLogo, contentItems, extraItems, 
   });
 }
 
-function renderSteamButton(steamUrl) {
+function renderSteamButton(steamUrl, steamLabel, iconSrc) {
   if (!steamUrl) return "";
+  const label = steamLabel || "-Go to Steam-";
   return (
     `      <a class="btn-steam" href="${escapeAttr(steamUrl)}" target="_blank" rel="noopener">\n` +
-    `        -Go to Steam-\n` +
-    `        <img src="assets/img/steam-icon.png" alt="">\n` +
+    `        ${escapeHtml(label)}\n` +
+    `        <img src="${escapeAttr(iconSrc)}" alt="">\n` +
     `      </a>\n`
   );
 }
@@ -433,11 +459,12 @@ async function main() {
     const navLabel = fields.NavLabel || folder;
     const slug = folder.toLowerCase().replace(/[^a-z0-9]/g, "");
     const hasLogo = await exists(path.join(folderPath, "Logo.png"));
+    const shopIcon = await findShopImage(folderPath);
 
     const contentItems = await listMediaFiles(path.join(folderPath, "content"), navLabel);
     const extraItems = await listMediaFiles(path.join(folderPath, "extra"), navLabel);
 
-    projects.push({ folder, slug, href: `${slug}.html`, label: navLabel, fields, hasLogo, contentItems, extraItems });
+    projects.push({ folder, slug, href: `${slug}.html`, label: navLabel, fields, hasLogo, contentItems, extraItems, shopIcon });
   }
 
   const navItems = [FIXED_NAV.about, ...projects.map((p) => ({ href: p.href, label: p.label }))];
@@ -451,6 +478,7 @@ async function main() {
       contentItems: project.contentItems,
       extraItems: project.extraItems,
       navHtml,
+      shopIcon: project.shopIcon,
     });
     await writeFile(path.join(ROOT, project.href), html, "utf8");
     console.log(`✓ ${project.href} (${project.contentItems.length} gallery item(s), ${project.extraItems.length} extra item(s))`);

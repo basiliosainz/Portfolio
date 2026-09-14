@@ -5,7 +5,8 @@ NavLabel: BubbleGum Head
 Intro: This was my thesis project for university in 2022, developed in Unity. I created it entirely on my own, with the exception of the music.
 
 # Link a Steam. Dejalo vacío para que el botón no se muestre.
-Steam:
+Steam:https://basiliosainz.itch.io/bubblegum-head
+SteamLabel:-Go to Itch.io-
 
 # Link de YouTube. Dejalo vacío para ocultar toda la sección de video.
 YouTube: https://www.youtube.com/watch?v=yfNtcgV8GEY
