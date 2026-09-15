@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('[data-carousel]').forEach(function (root) {
     var stage = root.querySelector('.carousel-media');
+    var thumbsContainer = root.querySelector('.carousel-thumbs');
     var thumbs = Array.prototype.slice.call(root.querySelectorAll('.carousel-thumb'));
     var nextBtn = root.querySelector('.carousel-next');
     var prevBtn = root.querySelector('.carousel-prev');
@@ -17,11 +18,17 @@ document.addEventListener('DOMContentLoaded', function () {
         t.classList.toggle('active', i === current);
       });
 
-      thumbs[current].scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center',
-      });
+      // Scroll only the thumbnail strip itself, not scrollIntoView(): that
+      // method walks every scrollable ancestor (including the surrounding
+      // .panel, which is `overflow: hidden` and therefore programmatically
+      // scrollable even though it never shows a scrollbar) and can end up
+      // shifting the whole panel - stage included - sideways instead of just
+      // the thumbnail row.
+      var activeThumb = thumbs[current];
+      var target =
+        activeThumb.offsetLeft -
+        (thumbsContainer.clientWidth - activeThumb.offsetWidth) / 2;
+      thumbsContainer.scrollTo({ left: target, behavior: 'smooth' });
 
       if (lightbox.isOpenFor(root)) {
         lightbox.render(thumbs[current]);
