@@ -37,15 +37,20 @@ body {
 }
 
 /* Rotated tiled icon pattern behind everything. The tile itself is a plain
-   axis-aligned repeat; we oversize it (300vmax) and rotate the whole thing
-   45deg so it tiles seamlessly with no visible seams or corner gaps. */
+   axis-aligned repeat; we oversize it and rotate the whole thing 25deg so it
+   tiles seamlessly with no visible seams or corner gaps. 150vmax already
+   gives ~1.5x the coverage a full-bleed rotated square needs (the geometric
+   minimum is roughly 1x); going bigger than that just forces the browser to
+   rasterize a huge fixed layer for no visual gain, which on large/high-DPI
+   screens caused occasional rendering glitches (e.g. the gallery carousel
+   would intermittently mis-render near the last image). */
 body::before {
   content: "";
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 300vmax;
-  height: 300vmax;
+  width: 150vmax;
+  height: 150vmax;
   transform: translate(-50%, -50%) rotate(-25deg);
   background-image: url("../img/bg-pattern.svg");
   background-repeat: repeat;
@@ -218,10 +223,13 @@ nav.site-nav::before {
   /* Fixed viewport-relative size instead of a % of the element's own box:
      wide-but-short strips (like the nav bar) have very little height to
      work with, so a height-relative "300%" isn't enough once rotated and
-     the pattern runs out near the edges. A large fixed size always covers
-     the element fully regardless of its own aspect ratio. */
-  width: 250vmax;
-  height: 250vmax;
+     the pattern runs out near the edges. A fixed size relative to the
+     viewport always covers the element fully regardless of its own aspect
+     ratio - 150vmax already gives a comfortable margin over the geometric
+     minimum without forcing the browser to rasterize a needlessly huge
+     layer (see body::before above for why that matters). */
+  width: 150vmax;
+  height: 150vmax;
   transform: translate(-50%, -50%) rotate(-25deg);
   background-image: url("../img/bg-pattern.svg");
   background-repeat: repeat;
