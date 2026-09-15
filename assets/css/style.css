@@ -451,14 +451,23 @@ nav.site-nav::before {
 }
 
 .carousel-stage {
+  /* padding-top intrinsic-ratio trick instead of `aspect-ratio`: Chromium has
+     a reflow bug where an `aspect-ratio` box can get stuck at a stale,
+     too-narrow width if the page reflows again after it (a web font
+     swapping in, the YouTube iframe above settling its height, etc.) -
+     this is the exact same 16:9 box as .video-embed above, which already
+     uses this technique and has never shown the bug. */
   position: relative;
+  width: 100%;
+  padding-top: 56.25%;
   border-radius: 0;
   overflow: hidden;
   background: var(--panel-2);
-  aspect-ratio: 16 / 9;
 }
 
 .carousel-media {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
 }
