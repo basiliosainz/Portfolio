@@ -13,10 +13,16 @@
 // project's media folder (next to Logo.png), it replaces the Steam icon on
 // that button - handy for games sold somewhere other than Steam.
 //
+// Background pattern: assets/img/bg-pattern-config.txt controls the tile
+// size, animation speed, and tremble distance for the page background and
+// for the panels/header/nav separately - see that file for details. This
+// script regenerates the pattern SVGs and CSS size variables from it too.
+//
 // Run with:  npm run build
 import { readdir, readFile, writeFile, stat, access } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { generate as generateBgPattern } from "./generate-bg-pattern.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -444,6 +450,8 @@ async function loadProjectFolders() {
 }
 
 async function main() {
+  await generateBgPattern();
+
   const folders = await loadProjectFolders();
   const projects = [];
 

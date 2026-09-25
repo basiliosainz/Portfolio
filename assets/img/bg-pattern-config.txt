@@ -1,0 +1,33 @@
+# ============================================================
+#  Configuracion del patron de iconos de fondo
+# ============================================================
+# Cambia estos numeros y despues corre "npm run build" (o commiteá
+# los cambios, si tenes el hook de pre-commit) para regenerar el
+# patron con los valores nuevos.
+#
+# El sitio tiene el patron en dos lugares distintos, cada uno con
+# sus propios 3 valores:
+#   FONDO   -> el fondo general de toda la pagina (detras de todo)
+#   FRANJAS -> el fondo dentro de los paneles/recuadros, el header y el nav
+#
+# ------------------------------------------------------------
+# TAMANO: factor de escala de cada baldosa del patron antes de
+# repetirse. 1 = tamano original del diseno. 2 = el doble de grande,
+# 0.5 = la mitad, etc. El ancho y el alto escalan siempre juntos y
+# mantienen la proporcion correcta de los iconos automaticamente.
+TAMANO_FONDO=1.5
+TAMANO_FRANJAS=1.75
+
+# ------------------------------------------------------------
+# VELOCIDAD: duracion en segundos de un ciclo completo de "temblor"
+# de cada icono. Numero mas grande = animacion mas lenta.
+VELOCIDAD_FONDO=1
+VELOCIDAD_FRANJAS=1
+
+# ------------------------------------------------------------
+# DISTANCIA: que tanto se mueven los iconos al temblar. La baldosa
+# del patron mide 240x160 en sus propias unidades internas, asi que
+# pensalo como "pixeles de la baldosa" mas o menos. Numero mas
+# grande = temblor mas notorio.
+DISTANCIA_FONDO=0.5	
+DISTANCIA_FRANJAS=0.5
