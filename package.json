@@ -4,7 +4,6 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "bg-pattern": "node scripts/generate-bg-pattern.mjs",
     "preview": "npm run build && npx --yes serve -l 5050 ."
   }
 }
